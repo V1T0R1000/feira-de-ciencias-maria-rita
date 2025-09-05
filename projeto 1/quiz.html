@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz - Verdadeiro ou Falso</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>Olá, {{ user }}! Pontos: {{ score }}</h2>
+    <p>{{ question["text"] }}</p>
+    {% if not answered %}
+      <form method="POST">
+        <button name="choice" value="true">Verdadeiro</button>
+        <button name="choice" value="false">Falso</button>
+      </form>
+    {% else %}
+      <p>{{ feedback }}</p>
+      <a href="{{ url_for('logout') }}">Sair</a>
+    {% endif %}
+  </div>
+</body>
+</html>
